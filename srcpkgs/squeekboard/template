@@ -1,0 +1,19 @@
+# Template file for 'squeekboard'
+pkgname=squeekboard
+version=1.43.1
+revision=1
+build_style=meson
+build_helper=rust
+hostmakedepends="glib-devel gettext pkg-config cargo wayland-devel"
+makedepends="rust gtk+3-devel gnome-desktop-devel libfeedback-devel libbsd-devel"
+depends="feedbackd libbsd"
+short_desc="Wayland on-screen keyboard for phones"
+maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.gnome.org/World/Phosh/squeekboard/"
+distfiles="${homepage}/-/archive/v${version}/${pkgname}-v${version}.tar.gz"
+checksum=64c73636f6d8a6ffe9f1094c4084b184db3f60ac4e02bf8bff860060308c61ab
+
+post_install() {
+	chmod +x ${DESTDIR}/usr/bin/squeekboard-entry
+}
